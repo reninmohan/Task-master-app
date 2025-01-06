@@ -9,6 +9,7 @@ function CreateTaskForm({ onTaskAdd, modalid }) {
   const [selectedTime, setSelectedTime] = useState("");
 
   const minDate = new Date().toISOString().split("T")[0];
+  console.log(minDate);
 
   const handleTimeChange = (e) => {
     const timeString = e.target.value;
@@ -26,7 +27,6 @@ function CreateTaskForm({ onTaskAdd, modalid }) {
     setTitle("");
     setDescription("");
     setSelectedDate("");
-    setSelectedTime("");
   }
 
   function createTask() {

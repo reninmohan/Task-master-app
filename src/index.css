@@ -50,8 +50,11 @@
 
   .xs-deletebtn {
     right: 3.5rem;
-
     top: 0.6rem;
+  }
+
+  .xs-time {
+    right: 2rem;
   }
 
   .xs-title {

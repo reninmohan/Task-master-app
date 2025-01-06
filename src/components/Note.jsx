@@ -39,8 +39,8 @@ function Note({ task, onUpdateTask, onDeleteTask }) {
           style={{ zIndex: "100", top: "1rem", left: "0.4rem" }}
         />
         <div
-          className="position-absolute d-flex align-items-center gap-2"
-          style={{ zIndex: "100", top: "1rem", right: "10rem" }}
+          className="position-absolute d-flex align-items-center gap-2 xs-time"
+          style={{ zIndex: "100", top: "1rem", right: "9.5rem" }}
         >
           <FaClock /> {task.time}
         </div>
