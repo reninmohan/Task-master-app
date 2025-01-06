@@ -35,7 +35,7 @@ function App() {
     <div>
       <Header onTaskAdd={addTask} />
       <Settings sortedDates={sortedDates} />
-      <Summary sortedDates={sortedDates} />
+      <Summary tasks={tasks} />
       <NotesSection onUpdateTask={updateTask} onDeleteTask={deleteTask} sortedDates={sortedDates} tasks={tasks} />
     </div>
   );
