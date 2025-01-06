@@ -30,7 +30,7 @@ function App() {
     <div>
       <Header onTaskAdd={addTask} />
       <Settings />
-      <Summary />
+      <Summary tasks={tasks} />
       <NotesSection onUpdateTask={updateTask} onDeleteTask={deleteTask} tasks={tasks} />
     </div>
   );

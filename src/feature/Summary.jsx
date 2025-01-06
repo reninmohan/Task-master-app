@@ -2,7 +2,6 @@ import SummaryComponent from "../components/SummaryComponent";
 import { RiProgress5Line } from "react-icons/ri";
 import { MdOutlineTimer } from "react-icons/md";
 import { MdCheckCircleOutline } from "react-icons/md";
-import { MdOutlineErrorOutline } from "react-icons/md";
 
 function Summary() {
   return (
@@ -17,7 +16,6 @@ function Summary() {
           accentColor="#3a2901"
           logo={<MdCheckCircleOutline />}
         />
-        {/* <SummaryComponent name="Overdue" noOfTask={24} color="#FB5D5D" accentColor="#330101" logo={<MdOutlineErrorOutline />} /> */}
       </div>
     </div>
   );
