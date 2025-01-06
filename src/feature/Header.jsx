@@ -10,7 +10,7 @@ function Header({ onTaskAdd }) {
         style={{ maxWidth: "100rem" }}
       >
         <Profile />
-        <CreateTaskBtn />
+        <CreateTaskBtn modalid="modal-create-task" />
         <CreateTaskForm onTaskAdd={onTaskAdd} modalid="modal-create-task" />
       </div>
     </header>

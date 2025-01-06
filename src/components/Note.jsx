@@ -1,14 +1,11 @@
 import { MdOutlineEditCalendar } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaClock } from "react-icons/fa";
+import EditTaskForm from "./EditTaskForm";
 function Note({ task, onUpdateTask, onDeleteTask }) {
   const handleToggleComplete = () => {
     onUpdateTask({ ...task, completed: !task.completed });
   };
-
-  function handleEdit() {
-    console.log("clicked on edit");
-  }
 
   return (
     <div className="accordion-item">
@@ -16,13 +13,14 @@ function Note({ task, onUpdateTask, onDeleteTask }) {
         <button
           type="button"
           data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
+          data-bs-target="#modal-edit-task"
           className="btn  btn-md  position-absolute xs-editbtn "
-          onClick={handleEdit}
           style={{ zIndex: "100", right: "6rem", top: "0.6rem", border: "1px solid #d9d9d9" }}
+          onClick={() => console.log(task.title)}
         >
           <MdOutlineEditCalendar />
         </button>
+        <EditTaskForm onUpdateTask={onUpdateTask} modalid="modal-edit-task" task={task} />
         <button
           className="btn btn-md position-absolute xs-deletebtn"
           style={{ zIndex: "100", right: "3rem", top: "0.6rem", border: "1px solid #d9d9d9" }}

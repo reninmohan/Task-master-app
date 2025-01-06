@@ -9,7 +9,6 @@ function CreateTaskForm({ onTaskAdd, modalid }) {
   const [selectedTime, setSelectedTime] = useState("");
 
   const minDate = new Date().toISOString().split("T")[0];
-  console.log(minDate);
 
   const handleTimeChange = (e) => {
     const timeString = e.target.value;
@@ -38,13 +37,12 @@ function CreateTaskForm({ onTaskAdd, modalid }) {
       time: selectedTime,
       completed: false,
     };
-    console.log(newTask);
     onTaskAdd(newTask);
   }
 
   return (
     <Modal Modalheader="Create Task" onClose={clearAll} action="Create" onAction={createTask} modalid={modalid}>
-      <form onSubmit={handleForm}>
+      <form onSubmit={handleForm} id={modalid}>
         <div className="mb-3">
           <label htmlFor="taskTitle" className="form-label fw-semibold">
             Title Task
@@ -56,7 +54,6 @@ function CreateTaskForm({ onTaskAdd, modalid }) {
             placeholder="Add Task Name..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            maxLength={30}
             required
           />
         </div>

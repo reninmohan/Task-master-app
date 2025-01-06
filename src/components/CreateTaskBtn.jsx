@@ -1,11 +1,11 @@
-function CreateTaskBtn() {
+function CreateTaskBtn({ modalid }) {
   return (
     <>
       <button
         className="btn btn-primary create-task-btn"
         type="button"
         data-bs-toggle="modal"
-        data-bs-target="#modal-create-task"
+        data-bs-target={`#${modalid}`}
         style={{
           minWidth: "10rem",
           paddingTop: "0.5rem",
