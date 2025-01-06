@@ -3,7 +3,7 @@ import { RiProgress5Line } from "react-icons/ri";
 import { MdOutlineTimer } from "react-icons/md";
 import { MdCheckCircleOutline } from "react-icons/md";
 
-function Summary() {
+function Summary({ sortedDates }) {
   return (
     <div style={{ backgroundColor: "#D5CBCB" }}>
       <div className="d-md-flex flex-wrap justify-content-md-center p-2 gap-md-4 d-sm-grid summary-grid-layout ">

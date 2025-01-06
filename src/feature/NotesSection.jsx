@@ -1,8 +1,5 @@
 import NotePerDate from "../components/NotePerDate";
-function NotesSection({ onUpdateTask, onDeleteTask, tasks }) {
-  const dates = [...new Set(tasks.map((item) => item.date))];
-
-  const sortedDates = dates.sort((a, b) => a.localeCompare(b));
+function NotesSection({ onUpdateTask, onDeleteTask, sortedDates, tasks }) {
   return (
     <div className="vh-100">
       {tasks.length === 0 ? (
