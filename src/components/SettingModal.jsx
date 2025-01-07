@@ -15,6 +15,7 @@ function SettingModal({ modalid, onToggleSetting, Modalheader, updateProfile, pr
   function handleForm(e) {
     e.preventDefault();
     updateProfile(editProfile);
+    onToggleSetting();
   }
 
   return (
@@ -61,7 +62,7 @@ function SettingModal({ modalid, onToggleSetting, Modalheader, updateProfile, pr
             type="text"
             className="form-control"
             name="profileImage"
-            placeholder="Add Your Pic URL..."
+            placeholder="Add Your Pic URL in 1:1 ratio....."
             value={editProfile.profileImage}
             onChange={editProfileDetails}
           />

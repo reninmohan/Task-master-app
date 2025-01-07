@@ -6,7 +6,7 @@ function Profile({ profileName, quote, profileImage }) {
         <img
           src={profileImage ? profileImage : guestimage}
           alt="Profile Pic"
-          className="rounded-circle"
+          className="rounded-circle "
           style={{ width: "100%", height: "100%" }}
         />
       </div>
