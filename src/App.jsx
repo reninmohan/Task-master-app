@@ -11,6 +11,16 @@ function App() {
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
 
+  const [profile, setProfile] = useState(() => {
+    const savedProfile = localStorage.getItem("profile");
+    return savedProfile ? JSON.parse(savedProfile) : {};
+  });
+
+  const updateProfile = (newData) => {
+    console.log(newData);
+    setProfile({ ...profile, ...newData });
+  };
+
   const addTask = (task) => {
     setTasks([...tasks, task]);
   };
@@ -29,12 +39,13 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    localStorage.setItem("profile", JSON.stringify(profile));
+  }, [tasks, profile]);
 
   return (
     <div>
-      <Header onTaskAdd={addTask} />
-      <Settings sortedDates={sortedDates} />
+      <Header onTaskAdd={addTask} profile={profile} />
+      <Settings sortedDates={sortedDates} updateProfile={updateProfile} profile={profile} />
       <Summary tasks={tasks} />
       <NotesSection onUpdateTask={updateTask} onDeleteTask={deleteTask} sortedDates={sortedDates} tasks={tasks} />
     </div>

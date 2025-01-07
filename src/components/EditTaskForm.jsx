@@ -34,7 +34,7 @@ function EditTaskForm({ onUpdateTask, modalid, task, onToggleEditModal }) {
   }
 
   return (
-    <CustomModal Modalheader="Edit Task" modalid={modalid} onToggleEditModal={onToggleEditModal}>
+    <CustomModal Modalheader="Edit Task" modalid={modalid} onClose={onToggleEditModal}>
       <form onSubmit={handleForm} id={modalid}>
         <div className="mb-3">
           <label htmlFor="taskTitle" className="form-label fw-semibold">
@@ -102,7 +102,7 @@ function EditTaskForm({ onUpdateTask, modalid, task, onToggleEditModal }) {
         <div className="d-flex justify-content-end align-content-center p-3 border-top gap-2">
           <hr />
           <button type="button" className="btn btn-secondary" onClick={onToggleEditModal}>
-            Close
+            Cancel
           </button>
           <button type="submit" className="btn btn-primary">
             Save

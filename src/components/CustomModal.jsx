@@ -1,6 +1,6 @@
 import { FaEdit } from "react-icons/fa";
 
-function CustomModal({ Modalheader, children, modalid, onToggleEditModal }) {
+function CustomModal({ Modalheader, children, modalid, onClose }) {
   return (
     <div
       className="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
@@ -15,7 +15,7 @@ function CustomModal({ Modalheader, children, modalid, onToggleEditModal }) {
           <h1 className="d-flex align-items-center fs-5 fw-semibold" style={{ gap: "0.5rem" }}>
             <span>{Modalheader}</span> <FaEdit />
           </h1>
-          <button className="bg-transparent border-0 fs-6" style={{ cursor: "pointer" }} onClick={onToggleEditModal}>
+          <button className="bg-transparent border-0 fs-6" style={{ cursor: "pointer" }} onClick={onClose}>
             &times;
           </button>
         </div>
