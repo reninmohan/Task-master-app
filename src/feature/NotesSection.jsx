@@ -1,5 +1,15 @@
+import { useState } from "react";
+import EditTaskForm from "../components/EditTaskForm";
 import NotePerDate from "../components/NotePerDate";
+
 function NotesSection({ onUpdateTask, onDeleteTask, sortedDates, tasks }) {
+  const [currentTodo, setCurrentTodo] = useState({});
+  const [IsEditModal, setIsEditModal] = useState(false);
+
+  function handleToggleEditModal() {
+    setIsEditModal((Is) => !Is);
+  }
+
   return (
     <div>
       {tasks.length === 0 ? (
@@ -8,8 +18,25 @@ function NotesSection({ onUpdateTask, onDeleteTask, sortedDates, tasks }) {
         </div>
       ) : (
         sortedDates.map((date) => (
-          <NotePerDate date={date} key={date} tasks={tasks} onUpdateTask={onUpdateTask} onDeleteTask={onDeleteTask} />
+          <NotePerDate
+            date={date}
+            key={date}
+            tasks={tasks}
+            onUpdateTask={onUpdateTask}
+            onDeleteTask={onDeleteTask}
+            onToggleEditModal={handleToggleEditModal}
+            setCurrentTodo={setCurrentTodo}
+          />
         ))
+      )}
+
+      {IsEditModal && (
+        <EditTaskForm
+          onUpdateTask={onUpdateTask}
+          modalid="modal-edit-task"
+          task={currentTodo}
+          onToggleEditModal={handleToggleEditModal}
+        />
       )}
     </div>
   );

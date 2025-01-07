@@ -1,8 +1,8 @@
 import { MdOutlineEditCalendar } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaClock } from "react-icons/fa";
-import EditTaskForm from "./EditTaskForm";
-function Note({ task, onUpdateTask, onDeleteTask }) {
+
+function Note({ task, onUpdateTask, onDeleteTask, setCurrentTodo, onToggleEditModal }) {
   const handleToggleComplete = () => {
     onUpdateTask({ ...task, completed: !task.completed });
   };
@@ -12,15 +12,15 @@ function Note({ task, onUpdateTask, onDeleteTask }) {
       <div className="accordion-header position-relative" id={`heading-${task.id}`}>
         <button
           type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#modal-edit-task"
           className="btn  btn-md  position-absolute xs-editbtn "
           style={{ zIndex: "100", right: "6rem", top: "0.6rem", border: "1px solid #d9d9d9" }}
-          onClick={() => console.log(task.title)}
+          onClick={() => {
+            setCurrentTodo(task);
+            onToggleEditModal();
+          }}
         >
           <MdOutlineEditCalendar />
         </button>
-        <EditTaskForm onUpdateTask={onUpdateTask} modalid="modal-edit-task" task={task} />
         <button
           className="btn btn-md position-absolute xs-deletebtn"
           style={{ zIndex: "100", right: "3rem", top: "0.6rem", border: "1px solid #d9d9d9" }}
@@ -28,13 +28,13 @@ function Note({ task, onUpdateTask, onDeleteTask }) {
         >
           <AiOutlineDelete />
         </button>
+
         <input
           type="checkbox"
           className="form-check-input position-absolute"
-          id="strikeThroughCheckbox"
           checked={task.completed}
           onChange={handleToggleComplete}
-          style={{ zIndex: "100", top: "1rem", left: "0.4rem" }}
+          style={{ zIndex: "100", top: "0.9rem", left: "0.3rem" }}
         />
         <div
           className="position-absolute d-flex align-items-center gap-2 xs-time"
@@ -42,7 +42,7 @@ function Note({ task, onUpdateTask, onDeleteTask }) {
         >
           <FaClock /> {task.time}
         </div>
-        <div
+        <h2
           className="accordion-button collapsed position-relative"
           type="button"
           data-bs-toggle="collapse"
@@ -54,7 +54,7 @@ function Note({ task, onUpdateTask, onDeleteTask }) {
           >
             {task.title}
           </span>
-        </div>
+        </h2>
       </div>
       <div
         id={`collapse-${task.id}-${task.date}`}

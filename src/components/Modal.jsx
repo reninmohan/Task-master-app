@@ -1,14 +1,7 @@
 import { FaEdit } from "react-icons/fa";
 function Modal({ Modalheader, children, onClose, modalid }) {
   return (
-    <div
-      className="modal fade"
-      id={modalid}
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabIndex="-1"
-      aria-labelledby="staticBackdropLabel"
-    >
+    <div className="modal fade" id={modalid} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">

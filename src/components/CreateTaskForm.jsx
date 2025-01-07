@@ -12,8 +12,8 @@ function CreateTaskForm({ onTaskAdd, modalid }) {
 
   const handleTimeChange = (e) => {
     const timeString = e.target.value;
-    const time = parse(timeString, "HH:mm", new Date()); // Parse time into a Date object
-    setSelectedTime(format(time, "hh:mm a")); // Format it as hh:mm AM/PM
+    const time = parse(timeString, "HH:mm", new Date());
+    setSelectedTime(format(time, "hh:mm a"));
   };
 
   function handleForm(e) {
@@ -41,7 +41,7 @@ function CreateTaskForm({ onTaskAdd, modalid }) {
   }
 
   return (
-    <Modal Modalheader="Create Task" onClose={clearAll} action="Create" onAction={createTask} modalid={modalid}>
+    <Modal Modalheader="Create Task" onClose={clearAll} modalid={modalid}>
       <form onSubmit={handleForm} id={modalid}>
         <div className="mb-3">
           <label htmlFor="taskTitle" className="form-label fw-semibold">
