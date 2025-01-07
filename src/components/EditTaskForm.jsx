@@ -1,20 +1,38 @@
+import { useState } from "react";
 import CustomModal from "./CustomModal";
+import { format, parse } from "date-fns";
 function EditTaskForm({ onUpdateTask, modalid, task, onToggleEditModal }) {
-  console.log(task);
   const formattedDate = task.date.split("-").reverse().join("-");
-  const [hours, minutes, period] = task.time.split(/[:\s]/); // Split the time into hours, minutes, and period (AM/PM)
-  let hour24 = parseInt(hours);
-  if (period === "PM" && hour24 !== 12) {
-    hour24 += 12;
-  } else if (period === "AM" && hour24 === 12) {
-    hour24 = 0;
-  }
-  const formattedTime = `${hour24.toString().padStart(2, "0")}:${minutes}`;
+  const formattedTime = format(parse(task.time, "hh:mm a", new Date()), "HH:mm");
+  const [editTask, setEditTask] = useState({
+    id: task.id,
+    completed: task.completed,
+    title: task.title,
+    description: task.description,
+    time: formattedTime,
+    date: formattedDate,
+  });
+
+  const formatTime = (time) => {
+    const parsedTime = parse(time, "HH:mm", new Date());
+    return format(parsedTime, "hh:mm a");
+  };
 
   function handleForm(e) {
     e.preventDefault();
-    // onUpdateTask();
+    const newTask = {
+      ...editTask,
+      time: formatTime(editTask.time),
+      date: format(editTask.date, "dd-MM-yyyy"),
+    };
+    onUpdateTask(newTask);
+    onToggleEditModal();
   }
+
+  function handleChange(e) {
+    setEditTask({ ...editTask, [e.target.name]: e.target.value });
+  }
+
   return (
     <CustomModal Modalheader="Edit Task" modalid={modalid} onToggleEditModal={onToggleEditModal}>
       <form onSubmit={handleForm} id={modalid}>
@@ -27,9 +45,10 @@ function EditTaskForm({ onUpdateTask, modalid, task, onToggleEditModal }) {
             className="form-control"
             id="taskTitle"
             placeholder="Add Task Name..."
-            defaultValue={task.title}
-            // onChange={(e) => setTitle(e.target.value)}
+            value={editTask.title}
+            onChange={handleChange}
             required
+            name="title"
           />
         </div>
 
@@ -42,9 +61,10 @@ function EditTaskForm({ onUpdateTask, modalid, task, onToggleEditModal }) {
             id="taskdescription"
             rows="3"
             placeholder="Add Description..."
-            defaultValue={task.description}
-            // onChange={(e) => setDescription(e.target.value)}
+            value={editTask.description}
+            onChange={handleChange}
             required
+            name="description"
           ></textarea>
         </div>
 
@@ -59,9 +79,9 @@ function EditTaskForm({ onUpdateTask, modalid, task, onToggleEditModal }) {
             className="form-control"
             placeholder="dd-mm-yyyy"
             required
-            defaultValue={formattedDate}
-            // onChange={(e) => setSelectedDate(e.target.value)}
-            // min={minDate}
+            value={editTask.date}
+            onChange={handleChange}
+            name="date"
           />
         </div>
 
@@ -73,9 +93,10 @@ function EditTaskForm({ onUpdateTask, modalid, task, onToggleEditModal }) {
             id="time-picker"
             type="time"
             className="form-control"
-            defaultValue={formattedTime}
-            // onChange={handleTimeChange}
             required
+            value={editTask.time}
+            onChange={handleChange}
+            name="time"
           />
         </div>
         <div className="d-flex justify-content-end align-content-center p-3 border-top gap-2">
@@ -84,7 +105,7 @@ function EditTaskForm({ onUpdateTask, modalid, task, onToggleEditModal }) {
             Close
           </button>
           <button type="submit" className="btn btn-primary">
-            Edit
+            Save
           </button>
         </div>
       </form>
