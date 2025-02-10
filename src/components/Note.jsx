@@ -61,7 +61,7 @@ function Note({ task, onUpdateTask, onDeleteTask, setCurrentTodo, onToggleEditMo
         className="accordion-collapse collapse "
         aria-labelledby={`heading-${task.id}`}
       >
-        <div className="accordion-body">{task.description}</div>
+        <div className={`accordion-body text-truncate`}>{task.description}</div>
       </div>
     </div>
   );
