@@ -47,7 +47,7 @@ function SettingModal({ modalid, onToggleSetting, Modalheader, updateProfile, pr
             className="form-control"
             name="quote"
             placeholder="Add Your Favorite Quote..."
-            maxLength={50}
+            maxLength={100}
             value={editProfile.quote}
             onChange={editProfileDetails}
           />
