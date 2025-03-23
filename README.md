@@ -1,7 +1,5 @@
 # Task Management Web Application
 
-A simple and intuitive **Task Management Web Application** built with the **MERN Stack** (MongoDB, Express, React, Node.js). This project allows users to add, edit, delete, and mark tasks as completed. The app also ensures data persistence across sessions by using local storage, and it features a fully responsive UI built with **Bootstrap**.
-
 ## Key Features:
 
 - **Add Tasks**: Create tasks by providing a name, description, and due date.
@@ -14,7 +12,6 @@ A simple and intuitive **Task Management Web Application** built with the **MERN
 ## Technologies Used:
 
 - **Frontend**: React, JSX, Bootstrap
-- **Backend**: Node.js, Express (Optional if adding a server-side feature)
 - **Persistence**: Local Storage
 - **Styling**: Bootstrap (Grid System, Forms, Buttons, Cards)
 
